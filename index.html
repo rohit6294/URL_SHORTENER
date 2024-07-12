@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,7 @@
     <script>
         async function shortenURL() {
             const originalURL = document.getElementById('originalURL').value;
-            const response = await fetch('https://url-shortener-s89q.onrender.com', {
+            const response = await fetch('/shorten', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -25,7 +24,6 @@
         }
     </script>
 </head>
-
 <body>
     <h1>URL Shortener</h1>
     <form onsubmit="event.preventDefault(); shortenURL();">
@@ -35,5 +33,4 @@
     </form>
     <p id="shortURL"></p>
 </body>
-
 </html>

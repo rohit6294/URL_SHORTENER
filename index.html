@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        async function shortURL(){
+            const originalURL=document.getElementById('originalURL').value;
+            const response=await fetch('/shorten',{
+                method:'POST',
+                headers:{
+                    'Contend-Type':'application/json'
+                },
+                body: JSON.stringify({url: originalURL})
+            });
+            if(response.ok)
+            {
+                const data = await response.json();
+                document.getElementById('shortURL').innerText = `Shortened URL: ${window.location.href}redirect/${data.short_url}`;
+            } else {
+                document.getElementById('shortURL').innerText = 'Error shortening URL';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>URL shortner</h1>
+    <form onsubmit="event.preventDefault(); shortURL()">
+        <label for="originalURL">Enter URL:</label>
+        <input type="text" id="originalURL" required>
+        <button type="submit">Short it</button>
+    </form>
+    <p id="shortURL"></p>
+</body>
+</html>

@@ -1,4 +1,4 @@
-module your-module-name
+module URL_SHORTENER
 
 go 1.22.3
 
